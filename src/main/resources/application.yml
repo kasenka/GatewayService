@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: auth-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/auth/**
+            - id: user-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/api/users/**
+
+
