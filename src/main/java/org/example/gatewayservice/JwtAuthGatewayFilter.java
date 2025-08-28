@@ -28,8 +28,11 @@ public class JwtAuthGatewayFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String path = exchange.getRequest().getURI().getPath();
 
-        // исключаем login и register
-        if (path.contains("/login") || path.contains("/register")) {
+        // исключаем login, register, refresh, logout
+        if (path.contains("/login") ||
+                path.contains("/register") ||
+                path.contains("/refresh") ||
+                path.contains("/logout")) {
             return chain.filter(exchange);
         }
 
