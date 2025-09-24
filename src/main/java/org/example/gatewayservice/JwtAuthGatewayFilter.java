@@ -19,7 +19,7 @@ public class JwtAuthGatewayFilter implements GlobalFilter, Ordered {
 
     private final WebClient webClient;
 
-    // строим базовый WebClient, чтобы понимать куда проксировать запросы
+    //  базовый WebClient, чтобы понимать куда проксировать запросы
     public JwtAuthGatewayFilter(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.baseUrl("http://localhost:8082").build(); // тут AuthService
     }
@@ -78,7 +78,7 @@ public class JwtAuthGatewayFilter implements GlobalFilter, Ordered {
 
     @Override
     public int getOrder() {
-        return -1; // важен порядок фильтра, чтобы он срабатывал первым
+        return -1;
     }
 }
 
